@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        *{
+            /*font-size: 150%;*/
+        }
+        button{
+            height: 50px;
+            width: 100px;
+        }
+    </style>
+    <title>Week 1 A</title>
+    <script>
+        "use strict";
+        function init(){
+            //const button = document.querySelector("button");
+            const button = document.querySelector("#actionButton");
+            
+            button.onclick=updateLabel;
+        }
+        function updateLabel(){
+            const p = document.querySelector("#output");
+            const name = document.querySelector("#inputA").value;
+            const Lname = document.querySelector("#inputB").value;
+            p.innerHTML="Welcome, "+name+" "+Lname+".";
+            p.style.color='red';
+            p.style.backgroundColor='yellow';
+            
+        }
+        window.onload=init;
+    </script>
+    </head>
+    <body>
+        <h1>Week 1</h1>
+        <button id="actionButton">Click Here</button>
+        <input id="inputA" placeholder="Enter First Name">
+        <input id="inputB" placeholder="Enter Last Name">
+        <p id="output">??????</p>
+    </body>
+</html>
