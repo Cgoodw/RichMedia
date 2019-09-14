@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Rainbow Walkers</title>
+	<style>
+	canvas{
+		border:1px solid black;
+	}
+	</style>
+	<script>
+	
+	let walker = {
+		x:320,
+		y:240,
+		color: "white",
+		width: 5,
+		move(){
+			if(flipWeightedCoin()){
+				this.x += flipWeightedCoin() ? -this.width : this.width;
+			}else{
+				this.y += flipWeightedCoin() ? -this.width : this.width;
+			}
+		}
+    };
+    let walkerR = {
+	   	x:320,
+	   	y:240,
+	   	color: "purple",
+	   	width: 5,
+	   	move(){
+	   		if(flipWeightedCoinR()){
+	   			this.x -= flipWeightedCoinR() ? -this.width : this.width;
+	   		}else{
+	   			this.y -= flipWeightedCoinR() ? -this.width : this.width;
+	   		}
+	   	}
+      };
+    let walkerD = {
+	   	x:320,
+	   	y:240,
+	   	color: "purple",
+	   	width: 5,
+	   	move(){
+	   		if(flipWeightedCoin()){
+	   			this.x -= flipWeightedCoin() ? -this.width : this.width;
+	   		}else{
+	   			this.y -= flipWeightedCoin() ? -this.width : this.width;
+	   		}
+	   	}
+      };
+    let walkerL = {
+	   	x:320,
+	   	y:240,
+	   	color: "green",
+	   	width: 5,
+	   	move(){
+	   		if(flipWeightedCoinL()){
+	   			this.x += flipWeightedCoinL() ? -this.width : this.width;
+	   		}else{
+	   			this.y += flipWeightedCoinL() ? -this.width : this.width;
+	   		}
+	   	}
+        
+	};
+	
+	
+		// #0 - in this class we will always use ECMAScript 5's "strict" mode
+		// See what 'use strict' does here:
+		// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions_and_function_scope/Strict_mode
+		'use strict';
+		let ctx;
+		// #1 call the init function after the pages loads
+		window.onload = function(){
+			console.log("page loaded!");
+			// #2 Now that the page has loaded, start drawing!
+			
+			// A - canvas variable points at <canvas> tag
+			let canvas = document.querySelector('canvas');
+			
+			// B - the ctx variable points at a "2D drawing context"
+			ctx = canvas.getContext('2d');
+			
+			// C - all fill operations are now in black
+			ctx.fillStyle = 'black'; 
+			
+			// D - fill a rectangle with the current fill color
+			ctx.fillRect(20,20,600,440); 
+			
+			setInterval(drawWalkers,1000/12);
+	//		setInterval(cls,5000);
+		}
+		
+		
+		function drawWalkers(){
+            //1
+			ctx.fillStyle = getRandomColor();
+		//	ctx.globalAlpha = 0.2;
+			ctx.fillRect(walker.x-walker.width/2,walker.y-walker.width/2,walker.width/2,walker.width/2);
+			walker.move();
+            
+            wrapWalker(walker);
+            
+            //2
+            ctx.fillStyle = getRandomColor();
+		//	ctx.globalAlpha = 0.2;
+			ctx.fillRect(walkerR.x-walkerR.width/2,walkerR.y-walkerR.width/2,walkerR.width/2,walkerR.width/2);
+			walkerR.move();
+            
+            wrapWalker(walkerR);
+
+            
+            //3
+            ctx.fillStyle = getRandomColor();
+		//	ctx.globalAlpha = 0.2;
+			ctx.fillRect(walkerL.x-walkerL.width/2,walkerL.y-walkerL.width/2,walkerL.width/2,walkerL.width/2);
+			walkerL.move();
+            
+            wrapWalker(walkerL);
+
+            
+            //4
+            ctx.fillStyle = getRandomColor();
+		//	ctx.globalAlpha = 0.2;
+			ctx.fillRect(walkerD.x-walkerD.width/2,walkerD.y-walkerD.width/2,walkerD.width/2,walkerD.width/2);
+			walkerD.move();
+            
+            wrapWalker(walkerD);
+
+		}
+		
+		// UTILS
+        
+        function wrapWalker(walk){
+            if(walk.x>599){
+                walk.x=18;
+            }
+            if(walk.x<19){
+                walk.x=598;
+            }
+            if(walk.y<19){
+                walk.y=438;
+            }
+            if(walk.y>439){
+                walk.y=18;
+            }
+        }
+        
+		function getRandomColor(){
+			function getByte(){
+				return 55 + Math.round(Math.random() * 200);
+			}
+			return "rgba(" + getByte() + "," + getByte() + "," + getByte() + ",.8)";
+		}
+		
+		function cls(){
+			ctx.clearRect(0,0,640,480);
+		}
+		
+        //3 different weights for different walkers
+        function flipWeightedCoinR(weight = 0.3){
+			return Math.random() < weight;
+		}
+		function flipWeightedCoin(weight = 0.7){
+			return Math.random() < weight;
+		}
+        function flipWeightedCoinL(weight = 0.5){
+			return Math.random() < weight;
+		}
+	</script>
+</head>
+<body>
+	<canvas width="640" height="480">
+		Get a real browser!
+	</canvas>
+</body>
+</html>

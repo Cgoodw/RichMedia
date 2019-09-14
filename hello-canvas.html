@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Hello Canvas</title>
+	<style type="text/css">
+	canvas{
+		border:1px solid gray;
+	}
+        
+    /** Loading fonts without JS loader
+    We are making a hidden area on the page where we can put text to force the fonts to load, but it will not be viewable to the user. Once these fonts are loaded into memory, they will be available to the canvas.
+    **/
+    #fontLoader {
+        height: 0;
+        width: 0;
+        overflow: hidden;
+    }
+    #indie {
+        font-family: 'Indie Flower', cursive;
+    }
+    #lobster {
+        font-family: 'Lobster', cursive;
+    }
+        
+	</style>
+  <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Signika&display=swap" rel="stylesheet">
+	<script>
+		// #0 - In this course we will always use ECMAScript 5's "strict" mode
+		// See what 'use strict' does here:
+		// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions_and_function_scope/Strict_mode
+		'use strict';
+		
+		// #1 call the init function after the pages loads
+		// this is called an "event handler"
+		window.onload = init;
+	
+		function init(){
+			// #2 Now that the page has loaded, start drawing!
+            console.log('init called');
+			
+			// A - canvas variable points at <canvas> tag
+            var canvas = document.querySelector('canvas');
+			
+			// B - the ctx variable points at a "2D drawing context"
+            var ctx = canvas.getContext('2d');			
+			
+            ctx.save();
+            // set shadow properties
+            ctx.shadowColor = "red";
+            ctx.shadowOffsetX = 0;
+            ctx.shadowOffsetY = 0;
+            ctx.shadowBlur = 30;
+             
+            // horizontal alignment
+            ctx.textAlign = "center";
+            // vertical alignment
+            ctx.textBaseline = "middle";
+            
+			// C - all fill operations are now blue
+            ctx.fillStyle = '#111133';			
+			
+			// D - fill a rectangle with the current fill color
+	        ctx.fillRect(0,0,640,480);		
+			
+			// E - set the current font
+			ctx.font = 'bold 35pt Signika';
+            
+            
+			
+			// F - change the current fill color
+			ctx.fillStyle = '#aa3344';
+			
+			// G - draw and fill text using current fill color
+			ctx.fillText('Cullen Goodwin-Schoen',320,240);
+			
+            //Different stuff-------------
+        
+            
+            //Squares
+            ctx.fillRect(30,215,40,40);
+            ctx.fillRect(570,215,40,40);
+    
+            ctx.restore();
+            
+            //IGM
+            ctx.font = '30pt Arial';
+            ctx.fillStyle = '#aaaaaa';
+            ctx.fillText('IGM',85,300);
+            
+            //Lines
+            ctx.save();
+            // 2 more drawing state variables
+            ctx.strokeStyle = "#dddddd";
+            ctx.lineWidth = 10;
+            // start defining a path - in this case just a line
+            ctx.beginPath();
+            // move a "pen" to 0,100
+            ctx.moveTo(0,100);
+            // draw to 640,100
+            ctx.lineTo(640,100);
+            // close the path
+            ctx.closePath();
+            // stroke the path so we can see it
+            ctx.stroke();
+            
+            
+            ctx.strokeStyle = "#dddddd";
+            ctx.lineWidth = 10;
+            ctx.beginPath();
+            ctx.moveTo(15,0);
+            ctx.lineTo(15,480);
+            ctx.closePath();
+            ctx.stroke();
+            ctx.save();
+            
+            //Triangle
+            for(let x= 1; x<25;x++){
+               //ctx.restore();
+                ctx.strokeStyle = 'rgb(' + Math.floor(255 - 12 * x) + ', ' +
+                       Math.floor(255 - 22 * x) + ','+ Math.floor(255 - 22 * x) +')';
+                ctx.beginPath();
+                ctx.lineWidth=4;
+                ctx.moveTo((400+x*14),(250+x*9));
+                ctx.lineTo((450+x*9),(320+x*9));
+                ctx.lineTo((350+x*9),(320)+x*9);
+                ctx.closePath();
+                ctx.stroke();
+            };
+            
+			/*
+			Make your version different:
+
+			i) Change the yellow rectangle to a different solid color.
+
+			ii) Change the text to your name, and change the color of the text to 
+			something else. Note: Color can be specified in any legal CSS way, 
+			i.e. pre-defined keyword, hex, shorthand hex, RGB value, RGB percentage, RGBA,
+			 or even HSL
+			http://www.w3schools.com/cssref/css_colors_legal.asp
+
+
+			iii) Change the font of your name to something else. If you know how to embed
+			 web fonts, find something here and use it: http://www.google.com/fonts
+
+			iv) Add another line of text that reads “IGM”. Make sure that this text
+			 appears in a different color and font than your name did.
+
+			v) Add two squares to your canvas (50 x 50  or so) using 
+			ctx.fillRect(x,y,width,height)- and make sure that the square color is the 
+			same as the first text you 
+			drew (your name).
+
+			*/
+
+
+
+		}
+	</script>
+</head>
+<body>
+	<canvas width="640" height="480">
+		Get a real browser!
+    
+	</canvas>
+		<!-- The user will only see the above text if their browser is older and doesn't support <canvas> -->
+    <div id="fontLoader">
+        <p id="indie">Indie Font</p>
+        <p id="lobster">Lobster Font</p>
+    </div>
+</body>
+</html>

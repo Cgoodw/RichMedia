@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Smiley</title>
+	<style type="text/css">
+	canvas{
+		border:1px solid gray;
+	}
+        
+    </style>
+	<script>
+		'use strict';
+		window.onload = init;
+		function init(){
+            var canvas = document.querySelector('canvas');
+            var ctx = canvas.getContext('2d');
+            
+            
+            
+            
+            //sky
+            ctx.fillStyle = "lightblue";
+            ctx.fillRect(0,0,800,500)
+            
+            //rainbow
+            ctx.lineWidth= 4;
+            ctx.fillStyle = "red";
+            ctx.beginPath();
+            ctx.arc(320,310,320,0,Math.PI, true);
+            //ctx.arc(375, 250, 200, 0, Math.PI*2, false); 
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+            ctx.lineWidth= 2;
+            ctx.fillStyle = "orange";
+            ctx.beginPath();
+            ctx.arc(320,310,280,0,Math.PI, true);
+            //ctx.arc(375, 250, 200, 0, Math.PI*2, false); 
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+            ctx.fillStyle = "yellow";
+            ctx.beginPath();
+            ctx.arc(320,310,250,0,Math.PI, true);
+            //ctx.arc(375, 250, 200, 0, Math.PI*2, false); 
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+            ctx.fillStyle = "green";
+            ctx.beginPath();
+            ctx.arc(320,310,220,0,Math.PI, true);
+            //ctx.arc(375, 250, 200, 0, Math.PI*2, false); 
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+            ctx.fillStyle = "blue";
+            ctx.beginPath();
+            ctx.arc(320,310,190,0,Math.PI, true);
+            //ctx.arc(375, 250, 200, 0, Math.PI*2, false); 
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+            
+            //tree
+            ctx.fillStyle="#55FF99";
+            ctx.beginPath();
+            ctx.moveTo(0,250);
+            ctx.lineTo(155,250);
+            ctx.lineTo(78,45);
+            ctx.closePath();
+            ctx.fill();
+            ctx.lineWidth= 3;
+            ctx.stroke();
+            
+            //trunk
+            ctx.lineWidth= 3;
+            ctx.fillStyle = "brown";
+            ctx.fillRect(50,250,50,50)   
+            ctx.strokeRect(50,250,50,50);
+            
+            //ground
+            ctx.fillStyle = "green";
+            ctx.fillRect(0,300,800,500)
+            
+            //horizon line
+            ctx.beginPath();
+            ctx.lineWidth = 5;
+            ctx.strokeStyle = "black";
+            ctx.moveTo(0,299);
+            ctx.lineTo(800,299);
+            ctx.closePath();
+            ctx.stroke();
+            
+            
+            
+            
+            
+            
+            //face
+            ctx.fillStyle = "yellow";
+            ctx.beginPath();
+            ctx.arc(320,220,170,0,Math.PI*2, false);
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+            
+            //eyes
+            ctx.fillStyle = "white";
+            ctx.beginPath();
+            ctx.arc(260,180,35,0,Math.PI*2, false);
+            ctx.closePath();
+            ctx.fill();
+            
+            ctx.fillStyle = "white";
+            ctx.beginPath();
+            ctx.arc(380,180,35,0,Math.PI*2, false);
+            //ctx.arc(375, 250, 200, 0, Math.PI*2, false); 
+            ctx.closePath();
+            ctx.fill();
+            
+            //pupils
+            ctx.fillStyle = "black";
+            ctx.beginPath();
+            ctx.arc(260,180,15,0,Math.PI*2, false);
+            ctx.closePath();
+            ctx.fill();
+            
+            ctx.fillStyle = "black";
+            ctx.beginPath();
+            ctx.arc(380,180,15,0,Math.PI*2, false);
+            //ctx.arc(375, 250, 200, 0, Math.PI*2, false); 
+            ctx.closePath();
+            ctx.fill();
+            
+            //mouth
+            ctx.fillStyle = "pink";
+            ctx.beginPath();
+            ctx.arc(320,250,35,0,Math.PI, false);
+            //ctx.arc(375, 250, 200, 0, Math.PI*2, false); 
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+            
+            
+            //tooth
+            ctx.fillStyle = "white";
+            ctx.beginPath();
+            ctx.arc(340,250,15,0,Math.PI, false);
+            //ctx.arc(375, 250, 200, 0, Math.PI*2, false); 
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();      
+            
+            ctx.fillStyle = "white";
+            ctx.beginPath();
+            ctx.arc(300,250,15,0,Math.PI, false);
+            //ctx.arc(375, 250, 200, 0, Math.PI*2, false); 
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke(); 
+            
+            ctx.fillStyle = "white";
+            ctx.beginPath();
+            ctx.arc(320,250,15,0,Math.PI, false);
+            //ctx.arc(375, 250, 200, 0, Math.PI*2, false); 
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke(); 
+            
+            
+            };
+	</script>
+</head>
+<body>
+	<canvas width="640" height="480">
+		Get a real browser!
+    
+	</canvas>
+</body>
+</html>
